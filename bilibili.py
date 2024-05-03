@@ -39,13 +39,14 @@ TO_COIN = "https://api.live.bilibili.com/xlive/revenue/v1/wallet/silver2coin"
 # 获取当日投币情况
 COIN_LOG = " https://api.bilibili.com/x/member/web/coin/log"
 
-
-class BiliBili:
-    headers = {
+headers = {
         "user-agent": "Mozilla/5.0",
         "Content-Type": "application/x-www-form-urlencoded",
         "Referer": "https://www.bilibili.com/",
-    }
+}
+
+class BiliBili:
+    headers = headers.copy()
 
     def __init__(self, **config) -> None:
         self.cookie = config.get("cookie")
@@ -204,7 +205,7 @@ class BiliBili:
             ]
         """
 
-        rep = req.get(RECOMMAND, params={"ps": ps, "pn": pn}).json()
+        rep = req.get(RECOMMAND, params={"ps": ps, "pn": pn},headers=headers).json()
 
         if rep["code"] == 0:
             res = []
@@ -223,7 +224,7 @@ class BiliBili:
 
             return res
         else:
-            failed(f"获取视频推荐列表失败")
+            failed(f"获取视频推荐列表失败, 原因: {rep['message']}")
 
             return [{"bvid": "BV1LS4y1C7Pa"}]
 
