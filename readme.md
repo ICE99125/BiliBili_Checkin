@@ -1,3 +1,5 @@
+本项目修改自https://github.com/arcturus-script/bilibili code_lite.zip为精简版的代码压缩包 只保留最基本的功能 去除push
+
 ## BiliBili(云函数版)
 
 ### 实现功能
