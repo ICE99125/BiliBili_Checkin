@@ -44,7 +44,7 @@ config = {
         },
     ],
     "push": {
-        # 合并发送消息, 只合并未单独配置 push 的账号
+        # 只作用于在multi并未配置 push 的组
         "type": "pushplus",
         "key": "xxx",
     },
