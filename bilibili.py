@@ -206,7 +206,6 @@ class BiliBili:
         """
 
         rep = req.get(RECOMMAND, params={"ps": ps, "pn": pn},headers=headers).json()
-        print(rep)
 
         if rep["code"] == 0:
             res = []
